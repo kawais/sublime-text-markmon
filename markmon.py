@@ -95,7 +95,7 @@ class MarkmonClient:
         self.server = server
 
     def view_updated(self, view, try_server=True):
-         if self.settings.running and MARKDOWN_SYNTAX.match(view.scope_name(0)):
+         if self.settings.running and MARKDOWN_SYNTAX.match(view.scope_name(0))!=None:
             try:
                 connection = http.client.HTTPConnection(self.settings.client_url)
                 connection.request('PUT', '/', view.substr(sublime.Region(0, view.size())).encode('utf-8'))
